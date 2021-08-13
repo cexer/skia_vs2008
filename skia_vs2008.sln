@@ -1,23 +1,26 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skia", "skia.vcproj", "{36699D48-06DC-38A1-92C1-79FED636A43E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skia", "builder\skia_vs2008.vcproj", "{36699D48-06DC-38A1-92C1-79FED636A43E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skiaTest", "tests\skiatest\skiatest.vcproj", "{4CC1CC2E-C4D9-4859-BB56-AB3F9AE191B2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{36699D48-06DC-38A1-92C1-79FED636A43E} = {36699D48-06DC-38A1-92C1-79FED636A43E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
-		MinSizeRel|Win32 = MinSizeRel|Win32
 		Release|Win32 = Release|Win32
-		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{36699D48-06DC-38A1-92C1-79FED636A43E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{36699D48-06DC-38A1-92C1-79FED636A43E}.Debug|Win32.Build.0 = Debug|Win32
-		{36699D48-06DC-38A1-92C1-79FED636A43E}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
-		{36699D48-06DC-38A1-92C1-79FED636A43E}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
 		{36699D48-06DC-38A1-92C1-79FED636A43E}.Release|Win32.ActiveCfg = Release|Win32
 		{36699D48-06DC-38A1-92C1-79FED636A43E}.Release|Win32.Build.0 = Release|Win32
-		{36699D48-06DC-38A1-92C1-79FED636A43E}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
-		{36699D48-06DC-38A1-92C1-79FED636A43E}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+		{4CC1CC2E-C4D9-4859-BB56-AB3F9AE191B2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CC1CC2E-C4D9-4859-BB56-AB3F9AE191B2}.Debug|Win32.Build.0 = Debug|Win32
+		{4CC1CC2E-C4D9-4859-BB56-AB3F9AE191B2}.Release|Win32.ActiveCfg = Release|Win32
+		{4CC1CC2E-C4D9-4859-BB56-AB3F9AE191B2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

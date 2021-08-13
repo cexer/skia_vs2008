@@ -3,3 +3,7 @@
 temp
 lib
 bin
+*.lib
+*.idb
+*.pdb
+*.ncb

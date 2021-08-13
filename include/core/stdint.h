@@ -140,7 +140,9 @@ typedef _ULonglong uintmax_t;
  #endif /* _WIN64 */
 #endif /* SIZE_MAX */
 
+#ifndef WCHAR_MIN
 #define WCHAR_MIN	0x0000
+#endif
 #define WCHAR_MAX	0xffff
 
 #define WINT_MIN	0x0000

@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="skia"
 	ProjectGUID="{36699D48-06DC-38A1-92C1-79FED636A43E}"
+	RootNamespace="skia"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="0"
 	>
@@ -17,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="Debug"
-			IntermediateDirectory="skia.dir\Debug"
+			OutputDirectory="$(SolutionDir)lib"
+			IntermediateDirectory="$(SolutionDir)temp\$(ProjectName)_vs2008\$(ConfigurationName)\"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -58,10 +59,11 @@
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;SKIA_DLL;SKIA_IMPLEMENTATION=1;CMAKE_INTDIR=\&quot;Debug\&quot;;skia_EXPORTS"
 				ExceptionHandling="1"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				RuntimeTypeInfo="false"
 				AssemblerListingLocation="Debug/"
 				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(OutDir)$(TargetName).pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="2"
@@ -79,6 +81,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName)-vs2008-sd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -98,8 +101,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Release"
-			IntermediateDirectory="skia.dir\Release"
+			OutputDirectory="$(SolutionDir)lib"
+			IntermediateDirectory="$(SolutionDir)temp\$(ProjectName)_vs2008\$(ConfigurationName)\"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -138,10 +141,11 @@
 				AdditionalIncludeDirectories="..\include\core;..\include\device\xps;..\include\effects;..\include\gpu\gl;..\include\gpu;..\include\images;..\include\pathops;..\include\pdf;..\include\pipe;..\include\ports;..\include\text;..\include\utils\ios;..\include\utils\mac;..\include\utils;..\include\utils\win;..\include\views\android;..\include\views\animated;..\include\views\unix;include;..\src\animator;..\src\core;..\src\effects\gradients;..\src\effects;..\src\fonts;..\src\gpu\effects;..\src\gpu\gl\debug;..\src\gpu\gl;..\src\gpu\gl\mesa;..\src\gpu;..\src\image;..\src\images;..\src\lazy;..\src\opts;..\src\pathops;..\src\pdf;..\src\pipe;..\src\pipe\utils;..\src\ports;..\src\record;..\src\sfnt;..\src\svg;..\src\utils\android;..\src\utils\debugger;..\src\utils;..\src\utils\win;..\src\views\mac;..\src\views;..\src\xml;..\third_party\etc1;..\third_party\ktx;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;SKIA_DLL;SKIA_IMPLEMENTATION=1;CMAKE_INTDIR=\&quot;Release\&quot;;skia_EXPORTS"
 				ExceptionHandling="1"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				RuntimeTypeInfo="false"
 				AssemblerListingLocation="Release/"
 				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(OutDir)$(TargetName).pdb"
 				WarningLevel="3"
 				CompileAs="2"
 			/>
@@ -158,6 +162,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName)-vs2008-s.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -177,8 +182,8 @@
 		</Configuration>
 		<Configuration
 			Name="MinSizeRel|Win32"
-			OutputDirectory="MinSizeRel"
-			IntermediateDirectory="skia.dir\MinSizeRel"
+			OutputDirectory="$(SolutionDir)lib"
+			IntermediateDirectory="$(SolutionDir)temp\$(ProjectName)_vs2008\$(ConfigurationName)\"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -217,10 +222,11 @@
 				AdditionalIncludeDirectories="..\include\core;..\include\device\xps;..\include\effects;..\include\gpu\gl;..\include\gpu;..\include\images;..\include\pathops;..\include\pdf;..\include\pipe;..\include\ports;..\include\text;..\include\utils\ios;..\include\utils\mac;..\include\utils;..\include\utils\win;..\include\views\android;..\include\views\animated;..\include\views\unix;include;..\src\animator;..\src\core;..\src\effects\gradients;..\src\effects;..\src\fonts;..\src\gpu\effects;..\src\gpu\gl\debug;..\src\gpu\gl;..\src\gpu\gl\mesa;..\src\gpu;..\src\image;..\src\images;..\src\lazy;..\src\opts;..\src\pathops;..\src\pdf;..\src\pipe;..\src\pipe\utils;..\src\ports;..\src\record;..\src\sfnt;..\src\svg;..\src\utils\android;..\src\utils\debugger;..\src\utils;..\src\utils\win;..\src\views\mac;..\src\views;..\src\xml;..\third_party\etc1;..\third_party\ktx;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;SKIA_DLL;SKIA_IMPLEMENTATION=1;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;;skia_EXPORTS"
 				ExceptionHandling="1"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				RuntimeTypeInfo="false"
 				AssemblerListingLocation="MinSizeRel/"
 				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(OutDir)$(TargetName).pdb"
 				WarningLevel="3"
 				CompileAs="2"
 			/>
@@ -271,8 +277,8 @@
 		</Configuration>
 		<Configuration
 			Name="RelWithDebInfo|Win32"
-			OutputDirectory="RelWithDebInfo"
-			IntermediateDirectory="skia.dir\RelWithDebInfo"
+			OutputDirectory="$(SolutionDir)lib"
+			IntermediateDirectory="$(SolutionDir)temp\$(ProjectName)_vs2008\$(ConfigurationName)\"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -311,10 +317,11 @@
 				AdditionalIncludeDirectories="..\include\core;..\include\device\xps;..\include\effects;..\include\gpu\gl;..\include\gpu;..\include\images;..\include\pathops;..\include\pdf;..\include\pipe;..\include\ports;..\include\text;..\include\utils\ios;..\include\utils\mac;..\include\utils;..\include\utils\win;..\include\views\android;..\include\views\animated;..\include\views\unix;include;..\src\animator;..\src\core;..\src\effects\gradients;..\src\effects;..\src\fonts;..\src\gpu\effects;..\src\gpu\gl\debug;..\src\gpu\gl;..\src\gpu\gl\mesa;..\src\gpu;..\src\image;..\src\images;..\src\lazy;..\src\opts;..\src\pathops;..\src\pdf;..\src\pipe;..\src\pipe\utils;..\src\ports;..\src\record;..\src\sfnt;..\src\svg;..\src\utils\android;..\src\utils\debugger;..\src\utils;..\src\utils\win;..\src\views\mac;..\src\views;..\src\xml;..\third_party\etc1;..\third_party\ktx;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;SKIA_DLL;SKIA_IMPLEMENTATION=1;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;;skia_EXPORTS"
 				ExceptionHandling="1"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				RuntimeTypeInfo="false"
 				AssemblerListingLocation="RelWithDebInfo/"
 				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(OutDir)$(TargetName).pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="2"

@@ -12,9 +12,6 @@
 #include "SkShader.h"
 #include "SkSurface.h"
 
-#include "hwbrk.h"
-#include "hwbrk.cpp"
-
 #define CHECK_FOR_ANNOTATION(paint) \
     do { if (paint.getAnnotation()) { return; } } while (0)
 

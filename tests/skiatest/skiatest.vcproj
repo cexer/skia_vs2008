@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)\out\"
-			IntermediateDirectory="$(SolutionDir)\temp\debug\"
+			OutputDirectory="$(SolutionDir)bin"
+			IntermediateDirectory="$(SolutionDir)temp\$(ProjectName)_vs2008\$(ConfigurationName)\"
 			ConfigurationType="1"
 			CharacterSet="1"
 			BuildLogFile="$(IntDir)\BuildLog.htm"
@@ -62,10 +62,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="skia.lib"
-				OutputFile="$(OutDir)\$(ProjectName)_d.exe"
+				AdditionalDependencies="skia-vs2008-sd.lib"
+				OutputFile="$(OutDir)\$(ProjectName)-vs2008-sd.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\cmake_2008\Debug\"
+				AdditionalLibraryDirectories="$(SolutionDir)lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -94,8 +94,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)\out\"
-			IntermediateDirectory="$(SolutionDir)\temp\release\"
+			OutputDirectory="$(SolutionDir)bin"
+			IntermediateDirectory="$(SolutionDir)temp\$(ProjectName)_vs2008\$(ConfigurationName)\"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -139,9 +139,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="skia.lib"
+				AdditionalDependencies="skia-vs2008-s.lib"
+				OutputFile="$(OutDir)\$(ProjectName)-vs2008-s.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\cmake_2008\Release\"
+				AdditionalLibraryDirectories="$(SolutionDir)lib"
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"

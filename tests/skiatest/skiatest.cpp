@@ -13,7 +13,7 @@
 #include "core\SkImageEncoder.h"
 #include "core\SkImageDecoder.h"
 #include "effects\SkBlurMaskFilter.h"
-#include "effects\SkBlurMask.h""
+#include "effects\SkBlurMask.h"
 
 #pragma comment(lib, "OpenGL32.lib")
 #pragma comment(lib, "usp10.lib")
@@ -113,8 +113,8 @@ int	doPrint(HDC hdc)
 	}
 
 	SkBitmap bmpPng;	
-	//if(!SkImageDecoder::DecodeFile("bk.png", &bmpPng))
-	//	MessageBox(m_hWnd, _T("无法打开png"), _T(""), MB_OK);
+	if(!SkImageDecoder::DecodeFile("bk.png", &bmpPng))
+		MessageBox(m_hWnd, _T("无法打开png"), _T(""), MB_OK);
 
 
 	SkCanvas canvas(g_skBitmap);

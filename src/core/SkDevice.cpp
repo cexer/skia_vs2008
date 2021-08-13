@@ -14,6 +14,8 @@ SkBaseDevice::SkBaseDevice()
     , fAttachedToCanvas(false)
 #endif
 {
+    printf("SkBaseDevice::constructor1, this=%p, cnt=%d\n", this, getRefCnt());
+
     fOrigin.setZero();
     fMetaData = NULL;
 }
@@ -24,11 +26,14 @@ SkBaseDevice::SkBaseDevice(const SkDeviceProperties& deviceProperties)
     , fAttachedToCanvas(false)
 #endif
 {
+    printf("SkBaseDevice::constructor2, this=%p, cnt=%d\n", this, getRefCnt());
+
     fOrigin.setZero();
     fMetaData = NULL;
 }
 
 SkBaseDevice::~SkBaseDevice() {
+    printf("SkBaseDevice::destructor, this=%p, cnt=%d\n", this, getRefCnt());
     delete fMetaData;
 }
 

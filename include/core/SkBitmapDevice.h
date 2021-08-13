@@ -30,6 +30,8 @@ public:
     */
     SkBitmapDevice(const SkBitmap& bitmap, const SkDeviceProperties& deviceProperties);
 
+    ~SkBitmapDevice();
+
     static SkBitmapDevice* Create(const SkImageInfo&,
                                   const SkDeviceProperties* = NULL);
 

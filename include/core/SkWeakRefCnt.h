@@ -88,12 +88,15 @@ public:
         reference is in the same state as before the call.
     */
     bool SK_WARN_UNUSED_RESULT try_ref() const {
-        if (sk_atomic_conditional_inc(&fRefCnt) != 0) {
+      int32_t v = fRefCnt;
+        if (sk_atomic_conditional_inc(&v) != 0) {
+          fRefCnt = v;
             // Acquire barrier (L/SL), if not provided above.
             // Prevents subsequent code from happening before the increment.
             sk_membar_acquire__after_atomic_conditional_inc();
             return true;
         }
+        fRefCnt = v;
         return false;
     }
 
@@ -103,7 +106,9 @@ public:
     void weak_ref() const {
         SkASSERT(fRefCnt > 0);
         SkASSERT(fWeakCnt > 0);
+        int32_t v = fWeakCnt;
         sk_atomic_inc(&fWeakCnt);  // No barrier required.
+        fWeakCnt = v;
     }
 
     /** Decrement the weak reference count. If the weak reference count is 1
@@ -114,7 +119,8 @@ public:
     void weak_unref() const {
         SkASSERT(fWeakCnt > 0);
         // Release barrier (SL/S), if not provided below.
-        if (sk_atomic_dec(&fWeakCnt) == 1) {
+        int32_t v = fWeakCnt;
+        if (sk_atomic_dec(&v) == 1) {
             // Acquire barrier (L/SL), if not provided above.
             // Prevents code in destructor from happening before the decrement.
             sk_membar_acquire__after_atomic_dec();

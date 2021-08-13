@@ -1,1 +1,5 @@
 *.user
+.vs
+temp
+lib
+bin

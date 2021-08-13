@@ -12,6 +12,9 @@
 #include "SkShader.h"
 #include "SkSurface.h"
 
+#include "hwbrk.h"
+#include "hwbrk.cpp"
+
 #define CHECK_FOR_ANNOTATION(paint) \
     do { if (paint.getAnnotation()) { return; } } while (0)
 
@@ -58,6 +61,8 @@ static bool valid_for_bitmap_device(const SkImageInfo& info,
 }
 
 SkBitmapDevice::SkBitmapDevice(const SkBitmap& bitmap) : fBitmap(bitmap) {
+    //SetHardwareBreakpoint(GetCurrentThread(), HWBRK_TYPE_WRITE, HWBRK_SIZE_4, (void*)&fRefCnt);
+    printf("SkBitmapDevice::constructor1, this=%p, cnt=%d\n", this, getRefCnt());
     SkASSERT(valid_for_bitmap_device(bitmap.info(), NULL));
 }
 
@@ -65,7 +70,14 @@ SkBitmapDevice::SkBitmapDevice(const SkBitmap& bitmap, const SkDeviceProperties&
     : SkBaseDevice(deviceProperties)
     , fBitmap(bitmap)
 {
+    printf("SkBitmapDevice::constructor2, this=%p, cnt=%d\n", this, getRefCnt());
     SkASSERT(valid_for_bitmap_device(bitmap.info(), NULL));
+}
+
+
+SkBitmapDevice::~SkBitmapDevice()
+{
+    printf("SkBitmapDevice::destructor2, this=%p, cnt=%d\n", this, getRefCnt());
 }
 
 SkBitmapDevice* SkBitmapDevice::Create(const SkImageInfo& origInfo,

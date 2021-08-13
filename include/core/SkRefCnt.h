@@ -15,6 +15,8 @@
 #include "SkInstCnt.h"
 #include "SkTemplates.h"
 
+#include <stdio.h>
+
 /** \class SkRefCntBase
 
     SkRefCntBase is the base class for objects that may be shared by multiple
@@ -31,7 +33,9 @@ public:
 
     /** Default construct, initializing the reference count to 1.
     */
-    SkRefCntBase() : fRefCnt(1) {}
+    SkRefCntBase() : fRefCnt(1) {
+        printf("SkRefCntBase::contructor, this=%p, cnt=%d\n", this, fRefCnt);
+    }
 
     /** Destruct, asserting that the reference count is 1.
     */
@@ -63,8 +67,12 @@ public:
     /** Increment the reference count. Must be balanced by a call to unref().
     */
     void ref() const {
+        printf("SkRefCntBase::ref, this=%p, cnt=%d\n", this, fRefCnt);
         SkASSERT(fRefCnt > 0);
-        sk_atomic_inc(&fRefCnt);  // No barrier required.
+
+        int32_t v = fRefCnt;
+        sk_atomic_inc(&v);  // No barrier required.
+        fRefCnt = v;
     }
 
     /** Decrement the reference count. If the reference count is 1 before the
@@ -72,14 +80,21 @@ public:
         the object needs to have been allocated via new, and not on the stack.
     */
     void unref() const {
-        SkASSERT(fRefCnt > 0);
+        int32_t v = fRefCnt;
+        printf("SkRefCntBase::unref, this=%p, cnt=%d, v=%d\n", this, fRefCnt, v);
+        //fRefCnt = 2;
+
+        SkASSERT(v > 0);
         // Release barrier (SL/S), if not provided below.
-        if (sk_atomic_dec(&fRefCnt) == 1) {
+
+        if (sk_atomic_dec(&v) == 1) {
             // Acquire barrier (L/SL), if not provided above.
             // Prevents code in dispose from happening before the decrement.
             sk_membar_acquire__after_atomic_dec();
             internal_dispose();
         }
+
+        fRefCnt = v;
     }
 
 #ifdef SK_DEBUG
@@ -116,7 +131,8 @@ private:
     friend class GrTexture;
     friend class SkWeakRefCnt;
 
-    mutable int32_t fRefCnt;
+public:
+    volatile mutable int32_t fRefCnt;
 
     typedef SkNoncopyable INHERITED;
 };

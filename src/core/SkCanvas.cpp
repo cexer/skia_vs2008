@@ -538,10 +538,14 @@ SkCanvas::SkCanvas(const SkBitmap& bitmap)
 {
     inc_canvas();
 
+    printf("SkCanvas::constructor, this=%p, refptr=%p, cnt=%d\n", this, static_cast<SkRefCntBase*>(this), getRefCnt());
+
     this->init(SkNEW_ARGS(SkBitmapDevice, (bitmap)))->unref();
 }
 
 SkCanvas::~SkCanvas() {
+    printf("SkCanvas::destructor, this=%p, refptr=%p, cnt=%d\n", this, static_cast<SkRefCntBase*>(this), getRefCnt());
+
     // free up the contents of our deque
     this->restoreToCount(1);    // restore everything but the last
     SkASSERT(0 == fSaveLayerCount);
